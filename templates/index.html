@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="height--1-1">
+  <head>
+     <script src="w"></script>
+     <title>Attic & Button</title>
+     <!-- Latest compiled and minified OUI stylesheet -->
+     <link rel="stylesheet" href="https://d2uaiq63sgqwfs.cloudfront.net/8.0.0/oui.css">
+     <style>
+       table, th, td, div {
+         padding: 5px;
+       }
+       button {
+         padding: 8px 15px;
+       }
+     </style>
+  </head>
+  <body class="background--grey height--1-1">
+    <div class="flex flex-justified--center soft-quad--ends soft-double--bottom background--faint">
+      <div class="max-width--large text--center text-align--center align--center">
+        <img src="images/logo.png" class="width--200 text--center align--middle" align="middle" style="margin-bottom:35px">
+        <center><h2> Welcome to Attic & Button!</h2></center>
+        <div align="center">
+          <form action="{{url_for('shop')}}" method="post">
+              <b>Simulate a visitor:</b> <input placeholder="Joe" type="text" name="user_id" value="{{user_id}}">
+              <input type="submit" value="Shop">
+          </form>
+        </div>
+        {% if variation_key %}
+            <div style="text: center; color: #cb1b2c;"><h3><b>Optimizely variation: {{variation_key}}</b></h3></div>
+        {% endif %}
+        {% if data %}
+          <table style="cellspacing: 10">
+              {% for i in [0,1,2] %}
+                <tr>
+                {% for item in data[i*3:i*3+3] %}
+                  <td class="background--white text--center font-family--tahoma">
+                    <h2><b>{{item['name']}}</b></h2>
+                    in {{item['color']}}<br>
+                    <b>{{item['category']}}, ${{item['price']}}</b>
+                    <img src="images/{{item['imageUrl']}}" >
+                    <form action="{{url_for('buy')}}" method="post">
+                        <input type="text" name="user_id" value="{{user_id}}" hidden="true">
+
+                      <button type="submit" style="background: #cb1b2c; color: #ffffff; border: none">BUY NOW</button>
+                    </form>
+                  </td>
+                  <td width="10"></td>
+                  <p></p>
+                {% endfor %}
+                </tr>
+                <tr height="10"></tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
