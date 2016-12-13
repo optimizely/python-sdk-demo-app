@@ -1,14 +1,13 @@
+# Python SDK Demo App
 
-#Python SDK Demo App
-
-This demo uses the Python SDK a part of Optimizely's Full Stack solution. It will walk you through:
+This demo uses the Python SDK, a part of Optimizely's Full Stack solution. It will walk you through:
 
 1. How to bucket users into experiment variations 
 2. How to track conversion events
 3. How to view the experiment’s results 
 4. How to receive experiment updates via webhooks
 
-##Optimizely Full Stack Overview
+## Optimizely Full Stack Overview
 
 Optimizely Full Stack allows developers to run experiments anywhere in their code! The Python SDK provides the core components to run a full stack experiment with Optimizely. It handles aspects like bucketing, which is used to designate users to a specific experiment variation, conversion tracking, and reporting via Optimizely’s [Stats Engine](https://www.optimizely.com/statistics/).  
 
@@ -18,7 +17,7 @@ Optimizely Full Stack allows developers to run experiments anywhere in their cod
 
 * Latest [Python SDK](https://github.com/optimizely/python-sdk)
 
-##Demo App
+## Demo App
 
 This example app simulates an online retailer testing the effects of sorting products by price vs category.
 
@@ -26,14 +25,14 @@ Using the instructions below, you can run the app locally and mimic bucketing we
  
 <img src="https://github.com/optimizely/python-sdk-demo-app/blob/master/images/screenshot.png" width="420" height="369px">
 
-###Deploying the App
-1. Login or create an Optimizely [Account](https://app.optimizely.com/signin).
+### Deploying the App
+1. Login or create an [Optimizely Account](https://app.optimizely.com/signin).
 2. Setup a Python project via the Optimizely dashboard. [Instructions](http://developers.optimizely.com/server/getting-started/index.html?language=python)
 3.  Create and run a [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
-4. In `application.py`, update the `project_id` and `experiment_key` , varaition keys and `event_key` where appropriate in code.
-5. Install requirements `pip install -r requirements.txt`
-6. Run the applicaiton `python application.py` (ensure the virtualenv is running)
-7. You’re all set. Play around and view the experiments results! 
+4. In `application.py`, update the `project_id`, `experiment_key`, variation keys, and `event_key` where appropriate in code.
+5. Install requirements: `pip install -r requirements.txt`
+6. Run the application `python application.py` (be sure the virtualenv is running)
+7. You’re all set. Play around and view the experiment's results! 
 
 To better understand this experiment, we recommend you bucket a few different visitors into variations and simulate a conversion event by clicking the Buy Now button. Within a few seconds, you should see the results populate on the Optimizely results page. 
 
@@ -83,7 +82,7 @@ Lastly, let’s take a look at the `webhook_event()` endpoint. The webhook servi
 },
 "event":"project.datafile_updated"
 ```
-Our endpoint looks at the event type and then re-initializes the Optimizely object with this new Datafile -- again, this is handled by the `OptimizelyConfigManager` class. As mentioned above, you can use the `test_webhook.py` script to mimic webhook events. 
+Our endpoint looks at the event type and then re-initializes the Optimizely object with this new Datafile --- again, this is handled by the `OptimizelyConfigManager` class. As mentioned above, you can use the `test_webhook.py` script to mimic webhook events. 
 
 ## Getting Help! 
 
