@@ -1,5 +1,6 @@
 import requests
 from optimizely import optimizely
+from optimizely.logger import SimpleLogger
 
 class OptimizelyConfigManager(object):
   obj = None
@@ -17,7 +18,7 @@ class OptimizelyConfigManager(object):
       url = 'https://cdn.optimizely.com/json/{0}.json'.format(self.project_id)
 
     datafile = self.retrieve_datafile(url)
-    self.obj = optimizely.Optimizely(datafile)
+    self.obj = optimizely.Optimizely(datafile, None, SimpleLogger())
 
   def retrieve_datafile(self, url):
     datafile = requests.get(url).text
