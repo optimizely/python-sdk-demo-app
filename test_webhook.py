@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import requests
 import json
 
@@ -8,4 +10,4 @@ data = {"timestamp": 1463602412, "project_id": project_id, "data": {"cdn_url": "
 
 r = requests.post("http://127.0.0.1:4001/webhook", data=json.dumps(data), headers={'Content-Type': 'application/json'})
 
-print r.text
+print(r.text)

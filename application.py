@@ -1,6 +1,7 @@
 # Python SDK Demo App
 # Copyright 2016 Optimizely. Licensed under the Apache License
 # View the documentation: http://optimize.ly/py-sdk 
+from __future__ import print_function
 
 import csv
 import json
@@ -50,12 +51,12 @@ def shop():
     
   # sort by price
   if variation_key == 'price':
-    print "In variation 1"
+    print("In variation 1")
     sorted_items = sorted(sorted_items, key=itemgetter('price'))
 
   # sort by category
   if variation_key == 'category':
-    print "In variation 2"
+    print("In variation 2")
     sorted_items = sorted(sorted_items, key=itemgetter('category'))
 
   return render_template('index.html', 
