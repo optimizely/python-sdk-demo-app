@@ -10,16 +10,16 @@ The demo works as follows:
 * The demo consists of a single webpage stored in **./templates/index.html** and a local server listening on Port 4001 that runs the server.
 * The main function and UI event handlers for the webpage are defined in **./application.py**.
 * The code to create an Optimizely Client instance is defined in **./optimizely_config_manager.py**.
-* As the webpage is rendered, the list of products and the names of their associated images to render, are read from **./items.csv**.
+* As the webpage is rendered, the list of products and the names of their associated images are read from **./items.csv**.
 * When the user clicks **Shop**, the demo invokes `activate`, passing the user ID entered in the edit field and the experiment ID (`item_sort`). The code then uses the Variation key returned to sort the items accordingly and passes it to the underlying HTML to be used during rendering.
-* When the user clicks one of the **Buy Now** buttons, the demo invokes `track`, passing in the event key `item_purchase` and the user ID entered in the edit field, to track the event.
+* When the user clicks one of the **Buy Now** buttons, the demo tracks the event by invoking `track`, passing in the event key `item_purchase` and the user ID entered in the edit field.
 
 ## Prerequisites
 * [Optimizely account](https://app.optimizely.com/signin)
 * [Python 2.7+](https://www.python.org) including pip and virtualenv
 
 ## Quick start
-This section shows you how to prepare the project in the Optimizely portal and then run the demo in a browser hosted by a local server.
+This section shows you how to prepare the project in the Optimizely portal and run the demo in a browser hosted by a local server.
 
 ### Preparing an Optimizely Project
 This section provides the steps to prepare an Optimizely project in your dashboard.
@@ -27,7 +27,7 @@ This section provides the steps to prepare an Optimizely project in your dashboa
 1. Clone or download the **python-sdk-demo-app** package.
 2. Log in or create an [Optimizely Account](https://app.optimizely.com/signin).
 3. Create a project via the Optimizely dashboard.
-4. Add a Feature Test with the key `item-sort` and two Variation keys: `price` and `category`. These will act as a toggle for the type of sorting to allow.
+4. Add a Feature Test with the key `item-sort` and two Variation keys: `price` and `category`. These will act as a toggle for the type of sorting to be permitted.
 5. Add an Event key called `item_purchase` and save the event. This event will be triggered when one of the **Buy** buttons is clicked.
 6. Navigate to the directory where the package was downloaded to in Step 1 and open **./application.py** in a text editor.
 7. Update the following:
@@ -97,7 +97,7 @@ The following subsections provide information about key aspects of the demo and 
 * [Styling](#styling)
 
 ### Package Structure
-The following are the main components of interest in the package:
+The following are the main components in the package:
 
 1. **./application.py**: contains the main Python code for the Demo App that invokes the Optimizely Python APIs.
 2. **./optimizely_config_manager.py**: contains a helper class called `OptimizelyConfigManager` that creates the Optimizely client object. Note that **./optimizely_config_manager.py** is the compiled version of this file used by the server.
@@ -134,7 +134,7 @@ config_manager = OptimizelyConfigManager(PROJECT_ID)
 ...
 ``` 
 
-When the main webpage starts, the `index` handler for the root route gets the information for each of the store's products stored in **./items.csv** using a helper function called `build_items`. `index` then renders the template for the main page defined in **index.html** by passsing the collection of items into `render_template` (`render_template` is a rendering function provided by the [Flask](http://flask.pocoo.org/) framework):
+When the main webpage starts, the `index` handler for the root route gets the information for each of the store's products stored in **./items.csv** using a helper function called `build_items`. The `index` handler then renders the template for the main page defined in **index.html** by passsing the collection of items into `render_template` (`render_template` is a rendering function provided by the [Flask](http://flask.pocoo.org/) framework):
 ```python
 @application.route('/')
 def index():
@@ -185,7 +185,7 @@ class OptimizelyConfigManager(object):
     ...
 ```
 
-When instantiated, the `__init__` method takes in and stores the ID of the project. When client code retrieves the instance, `get_obj` invokes `set_obj` the first time it's called to create the client. `get_obj`  constructs the URL of the datafile using the project ID, retrieves the datafile using that URL, and then creates and stores a reference to an Optimizely client using the data file.
+When instantiated, the `__init__` method takes in and stores the ID of the project. When client code retrieves the instance, `get_obj` invokes `set_obj` the first time it's called to create the client. `get_obj`  constructs the URL of the datafile using the project ID, retrieves the datafile using that URL, and creates and stores a reference to an Optimizely client using the data file.
 
 ## Functionality
 The demo illustrates how to:
@@ -233,7 +233,7 @@ def buy():
   return render_template('purchase.html')
 ```
 
-The handler obtains the user ID entered by the user in the input field. The handler then invokes the `track` API passing in the `item_purchase` event that was configured above in [Preparing an Optimizely Project](#preparing-an-optimizely-project) and the user ID. Finally, the handler redirects the user to **./purchase.html** to inform them about the experiment tracking.
+The handler obtains the user ID entered by the user in the input field. The handler then invokes the `track` API, passing in the `item_purchase` event that was configured above in [Preparing an Optimizely Project](#preparing-an-optimizely-project) and the user ID. Finally, the handler redirects the user to **./purchase.html** to inform them about the experiment tracking.
 
 ## Additional Resources
 * Developer Docs: http://developers.optimizely.com/server
