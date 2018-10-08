@@ -1,12 +1,12 @@
 # Optimizely Python SDK Tutorial
 This tutorial enables you to quickly get started in your development efforts to create a Python-based webpage with the Optimizely X Python SDK Demo App. This demo package includes an interactive project that illustrates how an online retailer could develop a new feature behind a toggle, roll it out gradually to more users, and run an experiment that tracks a business metric for the new and the old experiences.
 
-The feature is sorting functionality allowing the user to sort items by price or category, giving the user more control over just viewing products randomly on the page. To roll this feature out, it has been built behind an Optimizely-powered Experiment Variation that provides the ability to gate access without the need to deployment different versions of code.
+The new toggle feature in the demo app allows the user to sort items by price or category, giving the user more control over their view of the products displayed on the page. To roll this feature out, it has been built behind an Optimizely-powered Experiment Variation that provides the ability to gate access without the need to deployment different versions of code.
 
 ![test-app screens](./images/atticandbutton.png)
 
 The demo works as follows:
-* Configuration starts by setting up a Project, Feature, and Event in the Optimizely dashboard which will be queried by the demo webpage using the Optimizely Python API.
+* Configuration starts by setting up a Project, Feature, and Event in the Optimizely dashboard, which will be queried by the demo webpage using the Optimizely Python API.
 * The demo consists of a single webpage stored in **./templates/index.html** and a local server listening on Port 4001 that runs the server.
 * The main function and UI event handlers for the webpage are defined in **./application.py**.
 * The code to create an Optimizely Client instance is defined in **./optimizely_config_manager.py**.
