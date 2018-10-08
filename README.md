@@ -108,6 +108,7 @@ The following are the main components of interest in the package:
 
 ### Visual Assets
 **./items.csv** contains the list of products to sell on the demo website. For each product the file provides the description, color, name, price, and the name of a .png image file to display. The image files are located in **./images**:
+
 |Asset                   |Description                                                                                        |
 |------------------------|---------------------------------------------------------------------------------------------------|
 |`item_1.png`            |Contains an image of a hat.|
