@@ -18,6 +18,9 @@
       <div class="max-width--large text--center text-align--center align--center">
         <img src="images/logo.png" class="width--200 text--center align--middle" align="middle" style="margin-bottom:35px">
         <center><h2> Welcome to Attic & Button!</h2></center>
+        {% if title %}
+        <h3>Using SDK: {{ title }}</h3>
+        {% endif %}
         <div align="center">
           <form action="{{url_for('shop')}}" method="post">
               <b>Simulate a visitor:</b> <input placeholder="Joe" type="text" name="user_id" value="{{user_id}}">
