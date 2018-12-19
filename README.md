@@ -6,7 +6,7 @@ The new toggle feature in the demo app allows the user to sort items by price or
 ![test-app screens](./images/atticandbutton.png)
 
 The demo works as follows:
-* Configuration starts by setting up a Project, Feature, and Event in the Optimizely dashboard, which will be queried by the demo webpage using the Optimizely Python API.
+* Configuration starts by setting up a Project, Experiment, Feature, and Event in the Optimizely dashboard, which will be queried by the demo webpage using the Optimizely Python API.
 * The demo consists of a single webpage stored in **./templates/index.html** and a local server listening on Port 4001 that runs the server.
 * The main function and UI event handlers for the webpage are defined in **./application.py**.
 * The code to create an Optimizely Client instance is defined in **./optimizely_config_manager.py**.
@@ -57,7 +57,7 @@ This will create a folder in the current directory which will contain the Python
 Note: `demo_app` can optionally be replaced with any meaningful project name:
 
 5. Start the virtual environment:
-```swift
+```shell
 source demo_app/bin/activate
 ```
 6. Verify that the virtual environment is active by ensuring that the project name appears in brackets to the left of the prompt. In the following example `(demo_app)` appears in the prompt, indicating that the virtual environment is active:
