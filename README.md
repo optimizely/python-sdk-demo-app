@@ -67,7 +67,7 @@ To actually test which sorting algorithm influences increased sales, we need to 
 
 ```
   # Track conversion event
-  config_manager.get_obj().track("item_purchase", user_id)
+  config_manager.track("item_purchase", user_id)
 ``` 
 
 Lastly, let’s take a look at the `webhook_event()` endpoint. The webhook service alerts your application via an HTTP POST request when any changes are made to the project. You should provide your endpoint URL via the web app in Settings -> Webhooks. This is useful to ensure that your experiments are updated when you make changes in the web portal. The request will look like this: 
